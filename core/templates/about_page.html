@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    {{ block.super }} - + about page
+{% endblock html_title %}
+
+{% block content %}
+    <h2>Info about us</h2>
+    <p>We are <strong>{{num_students}}</strong> students studying on <strong>{{course}}</strong> course</p>
+    {#<p>List of students: {{students_list.keys}}</p>#}
+    <p>
+        List of students: {% for k, v in students_list.items %}
+        {{k|title}},
+        {% endfor %}
+    </p>
+
+    <ul>
+        {% for k, v in students_list.items %}
+            {% if v.right_side %}
+            <li><strong>{{k|title}}</strong> is from the right side: </li>
+            {% else %}
+            <li><strong>{{k|title}}</strong> is from the left side: </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h3>Birthdays!</h3>
+    {% for k, v in students_list.items %}
+        {% if k == "alex" %}
+        <p>Time until {{k|title}}'s birhtday: {{v.birhtday|timeuntil}}</p>
+        {% endif %}
+    {% endfor %}        
+    <p>We dont know about near parties</p>        
+
+    <p>Time until the end of studying: {{end|timeuntil}}</p>
+{% endblock content %}

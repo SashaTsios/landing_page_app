@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    Subjects page
+{% endblock html_title %}
+
+{% block content %}
+    {% csrf_token %}
+    <ul>
+        {% for element in subjects%}
+        <li><strong>{{element.subject_name_s}}</strong>: <a href=https://t.me/{{element.bot_name_s}} target="_blank"><img src="https://cdn3.iconfinder.com/data/icons/social-media-chamfered-corner/154/telegram-512.png" width="16px" height="16px" title="Telegram_bot: {{element.subject_name_s}}" alt="Telegram icon"></a><br/>{{element.description_s}}<hr/></li>
+        {% empty%}
+        <li>No subjects yet</li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

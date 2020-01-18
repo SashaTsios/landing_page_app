@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    {{ block.super }} - I am landing page
+{% endblock html_title %}
+
+{% block content %}
+<p>Hello {{name}}</p>
+<p>Active user {{user.email}}</p>
+<p>Today {{now|date:"H: i-D-d-M-Y"}}</p>
+<h2>List of students</h2>
+<ul>
+    {% for name in people %}
+    <li>{{name}}</li>
+    {% endfor %}
+</ul>
+<p>Random student's name is: {{people|random}}</p>
+
+<p>
+{% if message %}
+You've successfully performed your action with <strong>{{ message }}</strong>
+{% else %}
+Please, provide a GET param to your URL. Example: ?message=hello
+{% endif %}
+</p>
+
+{% endblock content %}

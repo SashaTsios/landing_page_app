@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    Feedbacks list
+{% endblock html_title %}
+
+{% block content %}
+    {% csrf_token %}
+    <p>===================</p>
+    {% if has_contacted %}
+        <p>Thanks for your feedback. It will appear after the moderation</p>
+    {% endif %}
+    <p>===================</p>
+    <ul>
+        {% for feedback in feedbacks%}
+        <li>{{ feedback.created_at}}: {{feedback.name_m}} + {{feedback.text_m}}<hr/></li>
+        {% empty%}
+        <li>No comments yet</li>
+        {% endfor %}
+    </ul>
+
+
+
+{% endblock content %}
+<!--{{ feedback.created_at|timesince:datetime.now}}   {{ variable|truncatechars:255 }}-->
