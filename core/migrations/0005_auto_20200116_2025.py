@@ -12,6 +12,6 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='feedback_new',
-            options={'ordering': ('-created_at',)},
+            options={'ordering': ('-created_at',)}, # - changes order direction
         ),
     ]

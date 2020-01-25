@@ -20,6 +20,8 @@ from core.views import about_page_view
 from core.views import contact_us_view
 from core.views import feedbacks_view
 from core.views import subjects_view
+from core.views import subject_item_view
+from core.views import subject_stats_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,7 +29,11 @@ urlpatterns = [
     path('about-us/', about_page_view),
     path('contact-us/', contact_us_view),
     path('feedbacks-lalala/', feedbacks_view, name="feedbacks"),
+    path('subjects<>/', subjects_view, name="subject"),
     path('subjects/', subjects_view),
+    path('subjects/<str:subject_name_s>/', subject_item_view, name='subject'),
+    path('subjects/<str:statistic_s1>/', subject_stats_view, name='subject_stats'),
+    
 ]
 
 #or    path('feedbacks/', feedbacks_view),

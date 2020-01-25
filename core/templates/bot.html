@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block html_title %}
+    Bots {{bot.bot_name_s}}page
+{% endblock html_title %}
+
+{% block content %}
+    {% csrf_token %}
+    <h2>Bot: {{bot.subject_name_s}}</h2>
+    <ul>
+        <a href=https://t.me/{{bot.bot_name_s}} target="_blank">
+        <img src="https://cdn3.iconfinder.com/data/icons/social-media-chamfered-corner/154/telegram-512.png" width="16px" height="16px" title="Telegram_bot: {{bot.subject_name_s}}" alt="Telegram icon"></a></br>
+        <b>{{bot.bot_name_s}}</b>
+        {{bot.description_s}}</br>
+        <i>Course author:</i> <a href="/subjects?author={{bot.author.name_a}}">{{bot.author.name_a}}</a></br>
+        <a href=https://t.me/{{bot.author.webpage_a}} target="_blank">
+            <img src="https://cdn4.iconfinder.com/data/icons/logistic-64/100/logistic-06-128.png" width="16px" height="16px" title="webpage: {{bot.author.webpage_a}}" alt="icon2">
+        </a>
+        <a href=https://{{bot.author.email_a}} target="_blank">
+            <img src="https://cdn4.iconfinder.com/data/icons/logistic-64/100/logistic-03-128.png" width="16px" height="16px" title="title: {{bot.author.email_a}}" alt="icon2">
+        </a>
+        <hr/>    
+    </ul>
+
+{% endblock content %}

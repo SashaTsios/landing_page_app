@@ -8,7 +8,14 @@
     {% csrf_token %}
     <ul>
         {% for element in subjects%}
-        <li><strong>{{element.subject_name_s}}</strong>: <a href=https://t.me/{{element.bot_name_s}} target="_blank"><img src="https://cdn3.iconfinder.com/data/icons/social-media-chamfered-corner/154/telegram-512.png" width="16px" height="16px" title="Telegram_bot: {{element.subject_name_s}}" alt="Telegram icon"></a><br/>{{element.description_s}}<hr/></li>
+        <li><a href="/subjects/{{element.bot_name_s}}"><strong>{{element.subject_name_s}}</strong></a>
+            : <a href=https://t.me/{{element.bot_name_s}} target="_blank"><img src="https://cdn3.iconfinder.com/data/icons/social-media-chamfered-corner/154/telegram-512.png" width="16px" height="16px" title="Telegram_bot: {{element.subject_name_s}}" alt="Telegram icon"></a></br>
+            <!--Course author: <a href="mailto:{{element.author.email_a}}"><p>{{element.author.name_a}}</p></a>-->
+
+            <i>Course author:</i> <a href="/subjects?author={{element.author.name_a}}">{{element.author.name_a}}</a></br>
+            {{element.description_s}}</br>
+            <i>Participants:</i><a href="/subjects?statistic_s={{element.statistic_s.name_num}}">{{element.statistic_s.name_num}}</a></br>
+        <hr/></li>
         {% empty%}
         <li>No subjects yet</li>
         {% endfor %}
